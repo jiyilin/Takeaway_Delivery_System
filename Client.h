@@ -23,6 +23,7 @@ private:
 	bool ClientSystemMenu();
 	void CLientSystemUI();
 	bool ClientSystemPro(int button);
+	void RegisteredUsers();
 public:
 	void ClientSystemStart();
 };

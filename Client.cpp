@@ -1,5 +1,9 @@
 #include "Client.h"
 #include<iostream>
+#include<fstream>
+#include<string.h>
+
+#include"User.h"
 
 bool ClientSystem::ClientSystemMenu()
 {
@@ -31,12 +35,41 @@ bool ClientSystem::ClientSystemPro(int button)
 		this->Client.ClientStart();
 		return false;
 	case 2:
-		std::cout << "注册" << std::endl;
+		this->RegisteredUsers();
 		break;
 	default:
 		return false;
 	}
 	return true;
+}
+
+void ClientSystem::RegisteredUsers()
+{
+	std::string idInput;
+	std::string passwordInput;
+	std::cout << "请输入账号：";
+	std::getline(std::cin, idInput);
+	std::cout << "请输入密码(密码应大于5位，小于16位)：";
+	std::getline(std::cin, passwordInput);
+	std::string process;
+
+	std::ifstream read;
+	read.open("./data/UserData.txt", std::ios_base::in);
+	while (std::getline(read,process))
+	{
+		if (std::strstr(process.c_str(),idInput.c_str()) != nullptr)
+		{
+			std::cout << "注册失败!!!   该用户已被注册" << std::endl;
+			read.close();
+			return;
+		}
+	}
+	read.close();
+
+	std::ofstream write;
+	write.open("./data/UserData.txt", std::ios_base::app);
+	write << idInput << " " << passwordInput << std::endl;
+	write.close();
 }
 
 void ClientSystem::ClientSystemStart()
