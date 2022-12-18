@@ -5,7 +5,7 @@
 
 int main()
 {
-	TakeawayDeliverySystem Demo;
+	TakeawayDeliverySystem Demo{};
 	if (Demo.EngineDetection())
 	{
 		Demo.EngineStarts();
