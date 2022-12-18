@@ -7,6 +7,10 @@
 
 class AdminSide : private Kernel
 {
+private:
+	bool AdminSideMenu();
+	void AdminSideUI();
+	bool AdminSidePro(int button);
 public:
 	void AdminSideStart();
 };

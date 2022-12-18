@@ -59,7 +59,7 @@ bool TakeawayDeliverySystem::TakeawayDeliverySystemPro(int button)
 	switch (button)
 	{
 	case 1:
-		this->client.ClientStart();
+		this->client.ClientSystemStart();
 		break;
 	case 2:
 		this->adminSide.AdminSideStart();

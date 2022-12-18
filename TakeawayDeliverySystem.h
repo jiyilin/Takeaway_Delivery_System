@@ -10,7 +10,7 @@
 class TakeawayDeliverySystem : private Kernel
 {
 private:
-	Client client;
+	ClientSystem client;
 	AdminSide adminSide;
 	bool TakeawayDeliverySystemMenu();
 	void TakeawayDeliverySystemUI();
