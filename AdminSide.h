@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 
 #ifndef ADMINSIDE_H
 #define ADMINSIDE_H
 
-#include"Kernel.h"
+#include "Kernel.h"
 
 class AdminSide : private Kernel
 {
@@ -16,6 +16,7 @@ private:
 	void OverviewOfUserData();
 	void MapViewing();
 	void MapModifications();
+
 public:
 	void AdminSideStart();
 };

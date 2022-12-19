@@ -1,14 +1,14 @@
-#include "Client.h"
-#include<Windows.h>
-#include<iostream>
-#include<fstream>
-#include<string>
-#include<string.h>
-#include<cstdio>
+ï»¿#include "Client.h"
+#include <Windows.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <string.h>
+#include <cstdio>
 
-#include"User.h"
-#include"HistoryList.h"
-#include"Map.h"
+#include "User.h"
+#include "HistoryList.h"
+#include "Map.h"
 
 bool ClientSystem::ClientSystemMenu()
 {
@@ -24,10 +24,10 @@ bool ClientSystem::ClientSystemMenu()
 void ClientSystem::CLientSystemUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     »¶Ó­Ê¹ÓÃÍâÂôµ¼º½ÏµÍ³¿Í»§¶Ë     ****** ||" << std::endl;
-	std::cout << "|| *              1. µÇÂ¼                          * ||" << std::endl;
-	std::cout << "|| *              2. ×¢²á                          * ||" << std::endl;
-	std::cout << "|| *              0. ÍË³ö                          * ||" << std::endl;
+	std::cout << "|| *******     æ¬¢è¿Žä½¿ç”¨å¤–å–å¯¼èˆªç³»ç»Ÿå®¢æˆ·ç«¯     ****** ||" << std::endl;
+	std::cout << "|| *              1. ç™»å½•                          * ||" << std::endl;
+	std::cout << "|| *              2. æ³¨å†Œ                          * ||" << std::endl;
+	std::cout << "|| *              0. é€€å‡º                          * ||" << std::endl;
 	std::cout << "|| *******                                    ****** ||" << std::endl;
 	std::cout << "*= ================================================  =*" << std::endl;
 }
@@ -48,12 +48,12 @@ bool ClientSystem::ClientSystemPro(int button)
 	return true;
 }
 
-void GainID(std::string& lock)
+void GainID(std::string &lock)
 {
 	std::string key;
 	for (int i = 0; i < lock.size(); i++)
 	{
-		if (lock[i]==' ')
+		if (lock[i] == ' ')
 		{
 			break;
 		}
@@ -62,19 +62,18 @@ void GainID(std::string& lock)
 	key = lock;
 }
 
-
 void ClientSystem::RegisteredUsers()
 {
 	std::string idInput;
 	std::string passwordInput;
-	std::cout << "ÇëÊäÈëÕËºÅ£º";
+	std::cout << "è¯·è¾“å…¥è´¦å·ï¼š";
 	std::getline(std::cin, idInput);
-	std::cout << "ÇëÊäÈëÃÜÂë(ÃÜÂëÓ¦´óÓÚ5Î»£¬Ð¡ÓÚ16Î»)£º";
+	std::cout << "è¯·è¾“å…¥å¯†ç (å¯†ç åº”å¤§äºŽ5ä½ï¼Œå°äºŽ16ä½)ï¼š";
 	std::getline(std::cin, passwordInput);
 
 	if (idInput.length() == 0 || passwordInput.length() == 0)
 	{
-		std::cout << "×¢²áÊ§°Ü£¬ÕËºÅÃÜÂë²»ÄÜÎª¿Õ" << std::endl;
+		std::cout << "æ³¨å†Œå¤±è´¥ï¼Œè´¦å·å¯†ç ä¸èƒ½ä¸ºç©º" << std::endl;
 		return;
 	}
 
@@ -82,12 +81,12 @@ void ClientSystem::RegisteredUsers()
 
 	std::ifstream read;
 	read.open("./data/UsersData.txt", std::ios_base::in);
-	while (std::getline(read,process))
+	while (std::getline(read, process))
 	{
 		GainID(process);
 		if (process == idInput)
 		{
-			std::cout << "×¢²áÊ§°Ü!!!   ¸ÃÓÃ»§ÒÑ±»×¢²á" << std::endl;
+			std::cout << "æ³¨å†Œå¤±è´¥!!!   è¯¥ç”¨æˆ·å·²è¢«æ³¨å†Œ" << std::endl;
 			read.close();
 			return;
 		}
@@ -99,7 +98,7 @@ void ClientSystem::RegisteredUsers()
 	write << idInput << " " << passwordInput << std::endl;
 	write.close();
 	std::ofstream writeHistory;
-	writeHistory.open("./data/" + idInput +".txt", std::ios_base::app);
+	writeHistory.open("./data/" + idInput + ".txt", std::ios_base::app);
 	writeHistory.close();
 }
 
@@ -111,14 +110,14 @@ void ClientSystem::ClientSystemStart()
 		system("pause");
 		system("cls");
 	}
-	std::cout << "ÄúÒÑ°²È«ÍË³ö¿Í»§¶Ë£¬»¶Ó­ÏÂ´ÎÊ¹ÓÃ" << std::endl;
+	std::cout << "æ‚¨å·²å®‰å…¨é€€å‡ºå®¢æˆ·ç«¯ï¼Œæ¬¢è¿Žä¸‹æ¬¡ä½¿ç”¨" << std::endl;
 }
 
 bool Client::ClientMenu()
 {
 	this->CLientUI();
-	auto button = this->GainMenuChoose(4,true);
-	if (this->ClientPro(button) == false )
+	auto button = this->GainMenuChoose(4, true);
+	if (this->ClientPro(button) == false)
 	{
 		return false;
 	}
@@ -128,12 +127,12 @@ bool Client::ClientMenu()
 void Client::CLientUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     »¶Ó­Ê¹ÓÃÍâÂôµ¼º½ÏµÍ³¿Í»§¶Ë     ****** ||" << std::endl;
-	std::cout << "|| *              1. Ñ°ÕÒÏßÂ·                      * ||" << std::endl;
-	std::cout << "|| *              2. ÀúÊ·¼ÇÂ¼                      * ||" << std::endl;
-	std::cout << "|| *              3. ÐÞ¸ÄÃÜÂë                      * ||" << std::endl;
-	std::cout << "|| *              4. ÕËºÅ×¢Ïú                      * ||" << std::endl;
-	std::cout << "|| *              0. ÍË³ö                          * ||" << std::endl;
+	std::cout << "|| *******     æ¬¢è¿Žä½¿ç”¨å¤–å–å¯¼èˆªç³»ç»Ÿå®¢æˆ·ç«¯     ****** ||" << std::endl;
+	std::cout << "|| *              1. å¯»æ‰¾çº¿è·¯                      * ||" << std::endl;
+	std::cout << "|| *              2. åŽ†å²è®°å½•                      * ||" << std::endl;
+	std::cout << "|| *              3. ä¿®æ”¹å¯†ç                       * ||" << std::endl;
+	std::cout << "|| *              4. è´¦å·æ³¨é”€                      * ||" << std::endl;
+	std::cout << "|| *              0. é€€å‡º                          * ||" << std::endl;
 	std::cout << "|| *******                                    ****** ||" << std::endl;
 	std::cout << "*= ================================================  =*" << std::endl;
 }
@@ -152,7 +151,7 @@ bool Client::ClientPro(int button)
 		this->ChangeUserPassword();
 		break;
 	case 4:
-		std::cout << "ÕËºÅ×¢Ïú³É¹¦" << std::endl;
+		std::cout << "è´¦å·æ³¨é”€æˆåŠŸ" << std::endl;
 		this->DestoryUserTxt();
 		return false;
 	default:
@@ -169,17 +168,17 @@ bool Client::LoadClient()
 {
 	std::string id;
 	std::string password;
-	std::cout << "ÇëÊäÈëÕËºÅ£º";
+	std::cout << "è¯·è¾“å…¥è´¦å·ï¼š";
 	std::getline(std::cin, id);
-	std::cout << "ÇëÊäÈëÃÜÂë£º";
+	std::cout << "è¯·è¾“å…¥å¯†ç ï¼š";
 	std::getline(std::cin, password);
 	if (id.length() == 0 || password.length() == 0)
 	{
-		std::cout << "µÇÂ¼Ê§°Ü    ÕËºÅÃÜÂë²»ÄÜÎª¿Õ" << std::endl;
+		std::cout << "ç™»å½•å¤±è´¥    è´¦å·å¯†ç ä¸èƒ½ä¸ºç©º" << std::endl;
 	}
-	else if (UserLoad(id,password,this->useNow))
+	else if (UserLoad(id, password, this->useNow))
 	{
-		std::cout << "µÇÂ¼³É¹¦" << std::endl;
+		std::cout << "ç™»å½•æˆåŠŸ" << std::endl;
 		system("pause");
 		system("cls");
 		return true;
@@ -191,18 +190,18 @@ void Client::ChangeUserPassword()
 {
 	std::string oldPassword;
 	std::string newPassowrd;
-	std::cout << "ÇëÊäÈëÔ­ÃÜÂë£º";
+	std::cout << "è¯·è¾“å…¥åŽŸå¯†ç ï¼š";
 	std::getline(std::cin, oldPassword);
 	if (oldPassword != this->useNow->GainUserPassword())
 	{
-		std::cout << "ÃÜÂëÐÞ¸ÄÊ§°Ü!!!   ÃÜÂëÊäÈë´íÎó" << std::endl;
+		std::cout << "å¯†ç ä¿®æ”¹å¤±è´¥!!!   å¯†ç è¾“å…¥é”™è¯¯" << std::endl;
 		return;
 	}
-	std::cout << "ÇëÊäÈëÐÂÃÜÂë£º";
+	std::cout << "è¯·è¾“å…¥æ–°å¯†ç ï¼š";
 	std::getline(std::cin, newPassowrd);
 	if (oldPassword == newPassowrd)
 	{
-		std::cout << "ÃÜÂëÐÞ¸ÄÊ§°Ü!!!   Ô­ÃÜÂëÓëÐÂÃÜÂëÒ»ÖÂ" << std::endl;
+		std::cout << "å¯†ç ä¿®æ”¹å¤±è´¥!!!   åŽŸå¯†ç ä¸Žæ–°å¯†ç ä¸€è‡´" << std::endl;
 		return;
 	}
 	this->useNow->SetUserPassword(newPassowrd);
@@ -216,19 +215,19 @@ void Client::UserHistory()
 	read.open(txt, std::ios_base::in);
 	std::string input;
 	auto data = HistoryList_Init();
-	while (std::getline(read,input))
+	while (std::getline(read, input))
 	{
 		HistoryList_push_back(data, input);
 	}
 	read.close();
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "                        ÀúÊ·¼ÇÂ¼                       " << std::endl;
+	std::cout << "                        åŽ†å²è®°å½•                       " << std::endl;
 	while (HistoryList_Empty(data) == false)
 	{
 		std::cout << HistoryList_pop_Back(data) << std::endl;
 	}
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "ÏÔÊ¾Íê³É" << std::endl;
+	std::cout << "æ˜¾ç¤ºå®Œæˆ" << std::endl;
 }
 
 void Client::DestoryUserTxt()
@@ -239,10 +238,10 @@ void Client::DestoryUserTxt()
 
 void Client::LookForARoute()
 {
-	std::cout << "ÇëÊäÈë³ö·¢µØµã£º";
+	std::cout << "è¯·è¾“å…¥å‡ºå‘åœ°ç‚¹ï¼š";
 	std::string From;
 	std::getline(std::cin, From);
-	std::cout << "ÇëÊäÈëµ½´ïµØµã£º";
+	std::cout << "è¯·è¾“å…¥åˆ°è¾¾åœ°ç‚¹ï¼š";
 	std::string To;
 	std::getline(std::cin, To);
 	Map data;
@@ -252,12 +251,12 @@ void Client::LookForARoute()
 	}
 	if (data.SEARCH_MAP(To) == false || data.SEARCH_MAP(From) == false)
 	{
-		std::cout << "²éÕÒÊ§°Ü£¬µØÍ¼ÎÞ¸ÃµØµã" << std::endl;
+		std::cout << "æŸ¥æ‰¾å¤±è´¥ï¼Œåœ°å›¾æ— è¯¥åœ°ç‚¹" << std::endl;
 		return;
 	}
-	data.GainRoute(From , To);
+	data.GainRoute(From, To);
 	data.Print_Route();
-	this->WriteUserHistoryTxt( From , To );
+	this->WriteUserHistoryTxt(From, To);
 }
 
 void Client::WriteUserHistoryTxt(std::string From, std::string To)
@@ -266,9 +265,7 @@ void Client::WriteUserHistoryTxt(std::string From, std::string To)
 	write.open("./data/" + useNow->GainUserID() + ".txt", std::ios_base::app);
 	SYSTEMTIME time;
 	GetLocalTime(&time);
-	write << "´Ó "<< From << "µ½ " << To << " " <<
-		time.wYear << ":" << time.wMonth << ":" << time.wDay <<":" <<
-		time.wHour << ":" << time.wMinute << ":" << time.wSecond << std::endl;
+	write << "ä»Ž " << From << "åˆ° " << To << " " << time.wYear << ":" << time.wMonth << ":" << time.wDay << ":" << time.wHour << ":" << time.wMinute << ":" << time.wSecond << std::endl;
 	write.close();
 }
 
@@ -277,7 +274,7 @@ void Client::ClientStart()
 	system("cls");
 	if (this->LoadClient() == false)
 	{
-		std::cout << "µÇÂ¼Ê§°Ü!!!   ÕËºÅ»òÃÜÂë´íÎó" << std::endl;
+		std::cout << "ç™»å½•å¤±è´¥!!!   è´¦å·æˆ–å¯†ç é”™è¯¯" << std::endl;
 		return;
 	}
 	while (this->ClientMenu())

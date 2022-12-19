@@ -1,16 +1,16 @@
-#pragma once
+﻿#pragma once
 
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include"Kernel.h"
+#include "Kernel.h"
 
-#include"UserTreeNode.h"
+#include "UserTreeNode.h"
 
 class Client : private Kernel
 {
 private:
-	User* useNow;
+	User *useNow;
 	bool ClientMenu();
 	void CLientUI();
 	bool ClientPro(int button);
@@ -19,7 +19,8 @@ private:
 	void UserHistory();
 	void DestoryUserTxt();
 	void LookForARoute();
-	void WriteUserHistoryTxt(std::string From,std::string To);
+	void WriteUserHistoryTxt(std::string From, std::string To);
+
 public:
 	void ClientStart();
 	~Client();
@@ -33,6 +34,7 @@ private:
 	void CLientSystemUI();
 	bool ClientSystemPro(int button);
 	void RegisteredUsers();
+
 public:
 	void ClientSystemStart();
 };

@@ -1,16 +1,17 @@
-#pragma once
+﻿#pragma once
 
 #ifndef USER_H
 #define USER_H
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
 class User
 {
 private:
 	std::string id;
 	std::string password;
+
 public:
 	User(std::string name, std::string cipher);
 	~User();

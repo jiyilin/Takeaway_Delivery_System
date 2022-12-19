@@ -1,4 +1,4 @@
-#include "User.h"
+ï»¿#include "User.h"
 
 User::User(std::string name, std::string cipher)
 {
@@ -31,13 +31,13 @@ bool User::SetUserPassword(std::string lock)
 {
 	if (lock.length() < 6 || lock.length() > 15)
 	{
-		std::cout << "ÃÜÂëÐÞ¸ÄÊ§°Ü!!!   ÃÜÂëÓ¦´óÓÚ5Î»£¬Ð¡ÓÚ16Î»" << std::endl;
+		std::cout << "å¯†ç ä¿®æ”¹å¤±è´¥!!!   å¯†ç åº”å¤§äºŽ5ä½ï¼Œå°äºŽ16ä½" << std::endl;
 		return false;
 	}
 	else
 	{
 		this->password = lock;
-		std::cout << "ÃÜÂëÐÞ¸Ä³É¹¦" << std::endl;
+		std::cout << "å¯†ç ä¿®æ”¹æˆåŠŸ" << std::endl;
 		return true;
 	}
 }

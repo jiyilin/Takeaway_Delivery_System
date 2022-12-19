@@ -1,29 +1,28 @@
-#include "Kernel.h"
-#include<iostream>
-#include<string>
+ï»¿#include "Kernel.h"
+#include <iostream>
+#include <string>
 
-
-int Kernel::GainMenuChoose(int max,bool isZero)
+int Kernel::GainMenuChoose(int max, bool isZero)
 {
-	std::cout << "ÇëÊäÈëÄúÐèÒªµÄ¹¦ÄÜ´úºÅ:";
+	std::cout << "è¯·è¾“å…¥æ‚¨éœ€è¦çš„åŠŸèƒ½ä»£å·:";
 	std::string input;
 	int key;
 	while (true)
 	{
 		std::getline(std::cin, input);
-		if (input.length()!=1 || input[0]<'0' || input[0]>'9')
+		if (input.length() != 1 || input[0] < '0' || input[0] > '9')
 		{
-			std::cout << "ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë£º";
+			std::cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 			continue;
 		}
 		key = input[0] - '0';
-		if (isZero == true && ( key < 0  || key > max ))
+		if (isZero == true && (key < 0 || key > max))
 		{
-			std::cout << "ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë£º";
+			std::cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 		}
-		else if(isZero == false && (key < 1 || key > max))
+		else if (isZero == false && (key < 1 || key > max))
 		{
-			std::cout << "ÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë£º";
+			std::cout << "è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 		}
 		else
 		{

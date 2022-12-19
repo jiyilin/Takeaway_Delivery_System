@@ -1,26 +1,26 @@
-#pragma once
+﻿#pragma once
 
 #ifndef USERLIST_H
 #define USERLIST_H
 
-#include"User.h"
+#include "User.h"
 
 using UserList = struct UserList
 {
-	User* data;
-	UserList* next;
+	User *data;
+	UserList *next;
 };
 
-void UserList_push_back(UserList*& lock, User eval);
-void UserList_push_front(UserList*& lock, User eval);
-User* UserList_pop_back(UserList*& lock);
-User* UserList_pop_front(UserList*& lock);
-bool UserList_Empty(UserList* lock);
-int UserList_Length(UserList* lock);
-User* UserList_gain_center(UserList* lock);
+void UserList_push_back(UserList *&lock, User eval);
+void UserList_push_front(UserList *&lock, User eval);
+User *UserList_pop_back(UserList *&lock);
+User *UserList_pop_front(UserList *&lock);
+bool UserList_Empty(UserList *lock);
+int UserList_Length(UserList *lock);
+User *UserList_gain_center(UserList *lock);
 // User* UserList_Split(UserList* lock,UserList*& left, UserList*& right);
-UserList* UserList_InitUserList();
-void UserList_sort(UserList*& lock);
-bool UserList_Read_Txt(UserList*& lock);
+UserList *UserList_InitUserList();
+void UserList_sort(UserList *&lock);
+bool UserList_Read_Txt(UserList *&lock);
 
 #endif // !USERLIST_H

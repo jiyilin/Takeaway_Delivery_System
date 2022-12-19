@@ -1,7 +1,7 @@
-#include "UserTreeNode.h"
+ï»¿#include "UserTreeNode.h"
 #include <fstream>
 
-UserTreeNode* SortedUserListToBST(UserList*& lock)
+UserTreeNode *SortedUserListToBST(UserList *&lock)
 {
 	if (UserList_Length(lock) == 0)
 	{
@@ -23,7 +23,7 @@ UserTreeNode* SortedUserListToBST(UserList*& lock)
 		}
 		if (search->data->GainUserID() > key->data->GainUserID())
 		{
-			auto process = new User(search->data->GainUserID(),search->data->GainUserPassword());
+			auto process = new User(search->data->GainUserID(), search->data->GainUserPassword());
 			UserList_push_back(right, *process);
 		}
 		else if (search->data->GainUserID() < key->data->GainUserID())
@@ -39,7 +39,7 @@ UserTreeNode* SortedUserListToBST(UserList*& lock)
 	return key;
 }
 
-bool SearchUserTreeNode(UserTreeNode*& lock, std::string eval, User*& key)
+bool SearchUserTreeNode(UserTreeNode *&lock, std::string eval, User *&key)
 {
 	if (lock == nullptr)
 	{
@@ -65,9 +65,9 @@ bool SearchUserTreeNode(UserTreeNode*& lock, std::string eval, User*& key)
 	return true;
 }
 
-bool SearchUserTreeList(UserList* lock, std::string eval, User*& key)
+bool SearchUserTreeList(UserList *lock, std::string eval, User *&key)
 {
-	//while (lock->next != nullptr)
+	// while (lock->next != nullptr)
 	//{
 	//	lock = lock->next;
 	//	if (lock->data->Gain_User_Id() == eval)
@@ -75,9 +75,9 @@ bool SearchUserTreeList(UserList* lock, std::string eval, User*& key)
 	//		key = lock->data;
 	//		return true;
 	//	}
-	//}
-	//key = nullptr;
-	//return false;
+	// }
+	// key = nullptr;
+	// return false;
 
 	auto data = SortedUserListToBST(lock);
 	if (!SearchUserTreeNode(data, eval, key))
@@ -88,12 +88,12 @@ bool SearchUserTreeList(UserList* lock, std::string eval, User*& key)
 	return true;
 }
 
-UserList* GainUSerData()
+UserList *GainUSerData()
 {
 	auto lock = UserList_InitUserList();
 	if (!UserList_Read_Txt(lock))
 	{
-		std::cout << "ÓÃ»§Êý¾ÝÒì³££¬ÎÞ·¨»ñÈ¡ÓÃ»§Êý¾Ý" << std::endl;
+		std::cout << "ç”¨æˆ·æ•°æ®å¼‚å¸¸ï¼Œæ— æ³•èŽ·å–ç”¨æˆ·æ•°æ®" << std::endl;
 		return nullptr;
 	}
 	// auto key = SortedUserListToBST(lock);
@@ -102,7 +102,7 @@ UserList* GainUSerData()
 
 bool UserDataFlushed(std::string flag)
 {
-	auto* lock = UserList_InitUserList();
+	auto *lock = UserList_InitUserList();
 	if (!UserList_Read_Txt(lock))
 	{
 		return false;
@@ -122,7 +122,7 @@ bool UserDataFlushed(std::string flag)
 	return true;
 }
 
-bool UserLoad(std::string id, std::string password, User*& key)
+bool UserLoad(std::string id, std::string password, User *&key)
 {
 	auto data = GainUSerData();
 	if (!SearchUserTreeList(data, id, key))

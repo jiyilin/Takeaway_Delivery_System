@@ -1,7 +1,7 @@
-#include "UserList.h"
+ï»¿#include "UserList.h"
 #include <fstream>
 
-void UserList_push_back(UserList*& lock, User eval)
+void UserList_push_back(UserList *&lock, User eval)
 {
 	auto end = lock;
 	while (end->next != nullptr)
@@ -9,7 +9,7 @@ void UserList_push_back(UserList*& lock, User eval)
 		end = end->next;
 	}
 
-	auto nodeData = new User(eval.GainUserID(),eval.GainUserPassword());
+	auto nodeData = new User(eval.GainUserID(), eval.GainUserPassword());
 	auto node = new UserList;
 	node->data = nodeData;
 	node->next = nullptr;
@@ -17,7 +17,7 @@ void UserList_push_back(UserList*& lock, User eval)
 	end->next = node;
 }
 
-void UserList_push_front(UserList*& lock, User eval)
+void UserList_push_front(UserList *&lock, User eval)
 {
 	auto nodeData = new User(eval.GainUserID(), eval.GainUserPassword());
 	auto node = new UserList;
@@ -27,7 +27,7 @@ void UserList_push_front(UserList*& lock, User eval)
 	lock->next = node;
 }
 
-User* UserList_pop_back(UserList*& lock)
+User *UserList_pop_back(UserList *&lock)
 {
 	if (UserList_Empty(lock))
 	{
@@ -43,7 +43,7 @@ User* UserList_pop_back(UserList*& lock)
 	return key;
 }
 
-User* UserList_pop_front(UserList*& lock)
+User *UserList_pop_front(UserList *&lock)
 {
 	auto key = lock->data;
 	lock = lock->next;
@@ -51,7 +51,7 @@ User* UserList_pop_front(UserList*& lock)
 	return key;
 }
 
-bool UserList_Empty(UserList* lock)
+bool UserList_Empty(UserList *lock)
 {
 	if (lock->next == nullptr)
 	{
@@ -60,7 +60,7 @@ bool UserList_Empty(UserList* lock)
 	return false;
 }
 
-int UserList_Length(UserList* lock)
+int UserList_Length(UserList *lock)
 {
 	int key = 0;
 	auto search = lock;
@@ -72,7 +72,7 @@ int UserList_Length(UserList* lock)
 	return key;
 }
 
-User* UserList_gain_center(UserList* lock)
+User *UserList_gain_center(UserList *lock)
 {
 	int flag = UserList_Length(lock) / 2;
 	auto search = lock;
@@ -106,16 +106,16 @@ User* UserList_gain_center(UserList* lock)
 //	return UserList_gain_center(lock);
 // }
 
-UserList* UserList_InitUserList()
+UserList *UserList_InitUserList()
 {
 	auto head = new UserList;
 	head->next = nullptr;
 	return head;
 }
 
-void UserList_sort(UserList*& lock)
+void UserList_sort(UserList *&lock)
 {
-	User* process;
+	User *process;
 	auto search = lock;
 	auto flag = search;
 	while (search->next != nullptr)
@@ -135,7 +135,7 @@ void UserList_sort(UserList*& lock)
 	}
 }
 
-std::string UserList_Gain_END_ID(UserList* data)
+std::string UserList_Gain_END_ID(UserList *data)
 {
 	if (UserList_Empty(data))
 	{
@@ -149,13 +149,13 @@ std::string UserList_Gain_END_ID(UserList* data)
 	return search->data->GainUserID();
 }
 
-bool UserList_Read_Txt(UserList*& lock)
+bool UserList_Read_Txt(UserList *&lock)
 {
 	std::ifstream read;
 	read.open("./data/UsersData.txt", std::ios_base::in);
 	if (read.is_open() == false)
 	{
-		std::cout << "Êý¾Ý¿âÒì³££¬ÎÞ·¨»ñÈ¡ÓÃ»§Êý¾Ý" << std::endl;
+		std::cout << "æ•°æ®åº“å¼‚å¸¸ï¼Œæ— æ³•èŽ·å–ç”¨æˆ·æ•°æ®" << std::endl;
 		return false;
 	}
 	std::string id;
@@ -166,7 +166,7 @@ bool UserList_Read_Txt(UserList*& lock)
 		{
 			break;
 		}
-		read >> id >>password;
+		read >> id >> password;
 		User process(id, password);
 		if (process.GainUserID() != UserList_Gain_END_ID(lock))
 		{

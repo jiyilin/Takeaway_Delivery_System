@@ -1,10 +1,10 @@
-#include "AdminSide.h"
-#include<iostream>
-#include<fstream>
-#include<string>
-#include"UserTreeNode.h"
+ï»¿#include "AdminSide.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "UserTreeNode.h"
 
-constexpr auto AdministratorID = "¸£Öİ´óÑ§ÖÁ³ÏÑ§Ôº";
+constexpr auto AdministratorID = "ç¦å·å¤§å­¦è‡³è¯šå­¦é™¢";
 constexpr auto AdministratorPassword = "123456";
 
 bool AdminSide::AdminSideMenu()
@@ -21,12 +21,12 @@ bool AdminSide::AdminSideMenu()
 void AdminSide::AdminSideUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     »¶Ó­Ê¹ÓÃÍâÂôµ¼º½ÏµÍ³¹ÜÀí¶Ë     ****** ||" << std::endl;
-	std::cout << "|| *              1. ÓÃ»§Êı¾İÈ«ÀÀ                  * ||" << std::endl;
-	std::cout << "|| *              2. ÓÃ»§×¢Ïú                      * ||" << std::endl;
-	std::cout << "|| *              3. µØÍ¼²é¿´                      * ||" << std::endl;
-	std::cout << "|| *              4. µØÍ¼ĞŞ¸Ä                      * ||" << std::endl;
-	std::cout << "|| *              0. ÍË³ö                          * ||" << std::endl;
+	std::cout << "|| *******     æ¬¢è¿ä½¿ç”¨å¤–å–å¯¼èˆªç³»ç»Ÿç®¡ç†ç«¯     ****** ||" << std::endl;
+	std::cout << "|| *              1. ç”¨æˆ·æ•°æ®å…¨è§ˆ                  * ||" << std::endl;
+	std::cout << "|| *              2. ç”¨æˆ·æ³¨é”€                      * ||" << std::endl;
+	std::cout << "|| *              3. åœ°å›¾æŸ¥çœ‹                      * ||" << std::endl;
+	std::cout << "|| *              4. åœ°å›¾ä¿®æ”¹                      * ||" << std::endl;
+	std::cout << "|| *              0. é€€å‡º                          * ||" << std::endl;
 	std::cout << "|| *******                                    ****** ||" << std::endl;
 	std::cout << "*= ================================================  =*" << std::endl;
 }
@@ -56,7 +56,7 @@ bool AdminSide::AdminSidePro(int button)
 void AdminSide::UserLogsOff()
 {
 	std::string id;
-	std::cout << "ÇëÊäÈë´ıÉ¾³ıµÄÓÃ»§ÕËºÅ£º";
+	std::cout << "è¯·è¾“å…¥å¾…åˆ é™¤çš„ç”¨æˆ·è´¦å·ï¼š";
 	std::getline(std::cin, id);
 	bool isDelete = false;
 	auto data = GainUSerData();
@@ -76,11 +76,11 @@ void AdminSide::UserLogsOff()
 	write.close();
 	if (isDelete == true)
 	{
-		std::cout << "É¾³ı³É¹¦" << std::endl;
+		std::cout << "åˆ é™¤æˆåŠŸ" << std::endl;
 	}
 	else
 	{
-		std::cout << "É¾³ıÊ§°Ü   Î´ÕÒµ½¸ÄÓÃ»§" << std::endl;
+		std::cout << "åˆ é™¤å¤±è´¥   æœªæ‰¾åˆ°æ”¹ç”¨æˆ·" << std::endl;
 	}
 }
 
@@ -88,9 +88,9 @@ bool AdminSide::AdminSideLoad()
 {
 	std::string id;
 	std::string passowrd;
-	std::cout << "ÇëÊäÈë¹ÜÀíÔ±ÕËºÅ£º";
+	std::cout << "è¯·è¾“å…¥ç®¡ç†å‘˜è´¦å·ï¼š";
 	std::getline(std::cin, id);
-	std::cout << "ÇëÊäÈë¹ÜÀíÔ±ÃÜÂë£º";
+	std::cout << "è¯·è¾“å…¥ç®¡ç†å‘˜å¯†ç ï¼š";
 	std::getline(std::cin, passowrd);
 	if (id != AdministratorID || passowrd != AdministratorPassword)
 	{
@@ -103,14 +103,16 @@ void AdminSide::OverviewOfUserData()
 {
 	auto data = GainUSerData();
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "ÓÃ»§" << "\t" << "ÃÜÂë" << std::endl;
+	std::cout << "ç”¨æˆ·"
+			  << "\t"
+			  << "å¯†ç " << std::endl;
 	while (UserList_Empty(data) == false)
 	{
 		auto process = UserList_pop_back(data);
 		std::cout << process->GainUserID() << "\t" << process->GainUserPassword() << std::endl;
 	}
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "ÏÔÊ¾Íê±Ï" << std::endl;
+	std::cout << "æ˜¾ç¤ºå®Œæ¯•" << std::endl;
 }
 
 void AdminSide::MapViewing()
@@ -121,13 +123,13 @@ void AdminSide::MapViewing()
 	readList.open("MapList.txt", std::ios_base::in);
 	if (read.is_open() == false || readList.is_open() == false)
 	{
-		std::cout << "²é¿´Ê§°Ü    µØÍ¼´ò¿ªÒì³£" << std::endl;
+		std::cout << "æŸ¥çœ‹å¤±è´¥    åœ°å›¾æ‰“å¼€å¼‚å¸¸" << std::endl;
 		return;
 	}
 	std::string input;
 
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "                        µØÍ¼½Úµã                       " << std::endl;
+	std::cout << "                        åœ°å›¾èŠ‚ç‚¹                       " << std::endl;
 	while (std::getline(readList, input))
 	{
 		std::cout << input << std::endl;
@@ -136,8 +138,8 @@ void AdminSide::MapViewing()
 	readList.close();
 
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "                          µØÍ¼                         " << std::endl;
-	while (std::getline(read,input))
+	std::cout << "                          åœ°å›¾                         " << std::endl;
+	while (std::getline(read, input))
 	{
 		std::cout << input << std::endl;
 	}
@@ -166,7 +168,7 @@ void AdminSide::AdminSideStart()
 {
 	if (this->AdminSideLoad() == false)
 	{
-		std::cout << "µÇÂ¼Ê§°Ü   ¹ÜÀíÔ±ÕËºÅ»òÃÜÂë´íÎó" << std::endl;
+		std::cout << "ç™»å½•å¤±è´¥   ç®¡ç†å‘˜è´¦å·æˆ–å¯†ç é”™è¯¯" << std::endl;
 		return;
 	}
 	system("cls");
@@ -175,5 +177,5 @@ void AdminSide::AdminSideStart()
 		system("pause");
 		system("cls");
 	}
-	std::cout << "ÄúÒÑ°²È«ÍË³ö¹ÜÀíÔ±¶Ë£¬»¶Ó­ÏÂ´ÎÊ¹ÓÃ" << std::endl;
+	std::cout << "æ‚¨å·²å®‰å…¨é€€å‡ºç®¡ç†å‘˜ç«¯ï¼Œæ¬¢è¿ä¸‹æ¬¡ä½¿ç”¨" << std::endl;
 }

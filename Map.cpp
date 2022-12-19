@@ -1,8 +1,8 @@
-#include "Map.h"
-#include<iostream>
-#include<fstream>
+ï»¿#include "Map.h"
+#include <iostream>
+#include <fstream>
 
-#include"Graph.h"
+#include "Graph.h"
 
 bool Map::ReadMapList()
 {
@@ -10,11 +10,11 @@ bool Map::ReadMapList()
 	read.open("MapList.txt", std::ios_base::in);
 	if (read.is_open() == false)
 	{
-		std::cout << "ERROR    µØÍ¼ÎÄ¼þ¶ÁÈ¡´íÎó" << std::endl;
+		std::cout << "ERROR    åœ°å›¾æ–‡ä»¶è¯»å–é”™è¯¯" << std::endl;
 		return false;
 	}
 	std::string input;
-	while (std::getline(read,input))
+	while (std::getline(read, input))
 	{
 		this->MapList.push_back(input);
 	}
@@ -23,7 +23,7 @@ bool Map::ReadMapList()
 
 void Map::GainRoute(std::string From, std::string To)
 {
-	this->key =  MapInterface(From, To);
+	this->key = MapInterface(From, To);
 }
 
 void Map::Print_Route()
@@ -31,7 +31,7 @@ void Map::Print_Route()
 	auto search = this->key.begin();
 	int number = 1;
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "                          Â·ÏßÈçÏÂ                     " << std::endl;
+	std::cout << "                          è·¯çº¿å¦‚ä¸‹                     " << std::endl;
 	while (search != key.end())
 	{
 		std::cout << number << ".  " << *search << std::endl;
@@ -44,7 +44,7 @@ void Map::Print_Route()
 bool Map::SEARCH_MAP(std::string lock)
 {
 	auto search = this->MapList.begin();
-	while (search!=this->MapList.end())
+	while (search != this->MapList.end())
 	{
 		if (*search == lock)
 		{
@@ -54,4 +54,3 @@ bool Map::SEARCH_MAP(std::string lock)
 	}
 	return false;
 }
-

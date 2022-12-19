@@ -1,7 +1,7 @@
 ﻿#include "TakeawayDeliverySystem.h"
 #include <Windows.h>
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 
 bool TakeawayDeliverySystem::EngineDetection()
 {
@@ -39,7 +39,7 @@ void TakeawayDeliverySystem::EngineStarts()
 bool TakeawayDeliverySystem::TakeawayDeliverySystemMenu()
 {
 	this->TakeawayDeliverySystemUI();
-	auto button = this->GainMenuChoose(2,true);
+	auto button = this->GainMenuChoose(2, true);
 	if (this->TakeawayDeliverySystemPro(button) == false)
 	{
 		return false;

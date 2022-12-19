@@ -1,5 +1,5 @@
-#include "Graph.h"
-#include<fstream>
+ï»¿#include "Graph.h"
+#include <fstream>
 
 using namespace std;
 
@@ -61,7 +61,7 @@ void Graph::shortest_path(int start)
     print_shortest_path(distance, parent, start);
 }
 
-void Graph::print_shortest_path(const vector<int>& distance, const vector<int>& parent, int start)
+void Graph::print_shortest_path(const vector<int> &distance, const vector<int> &parent, int start)
 {
     for (auto u = distance.size() - 1; u != start && u != -1; u = parent[u])
     {
@@ -112,9 +112,9 @@ void Graph::ReadMapList()
     read.close();
 }
 
-void Graph::GainList(int from,int to)
+void Graph::GainList(int from, int to)
 {
-    int start= 0;
+    int start = 0;
     int end = 0;
     for (int i = 0; i < key.size(); i++)
     {
@@ -122,14 +122,14 @@ void Graph::GainList(int from,int to)
         {
             start = i;
         }
-        else if(key[i] == to)
+        else if (key[i] == to)
         {
             end = i;
         }
     }
     if (start < end)
     {
-        for (; start <= end;start++)
+        for (; start <= end; start++)
         {
             answer.push_back(key[start]);
         }
@@ -146,21 +146,21 @@ void Graph::GainList(int from,int to)
 
 void Graph::Print()
 {
-    auto  search = answer.begin();
+    auto search = answer.begin();
     while (search != answer.end())
     {
-        //cout << map[*search-1] << endl;
+        // cout << map[*search-1] << endl;
         out.push_back(map[*search]);
         search++;
     }
 }
 
-std::list < std::string> MapInterface(std::string From, std::string To)
+std::list<std::string> MapInterface(std::string From, std::string To)
 {
     auto data = ReadDataTxt();
-    if (data == nullptr )
+    if (data == nullptr)
     {
-        cout << "ÏµÍ³Òì³££¬ÎÞ·¨Æô¶¯µØÍ¼" << std::endl;
+        cout << "ç³»ç»Ÿå¼‚å¸¸ï¼Œæ— æ³•å¯åŠ¨åœ°å›¾" << std::endl;
     }
     else
     {
@@ -168,11 +168,11 @@ std::list < std::string> MapInterface(std::string From, std::string To)
         data->GainAnswer(From, To);
         return data->out;
     }
-    std::list < std::string> out;
+    std::list<std::string> out;
     return out;
 }
 
-Graph* ReadDataTxt()
+Graph *ReadDataTxt()
 {
     ifstream read;
     read.open("Map.txt", ios_base::in);
@@ -183,7 +183,7 @@ Graph* ReadDataTxt()
     int number;
     int numberLine;
     read >> number >> numberLine;
-    auto* data = new Graph(number);
+    auto *data = new Graph(number);
     int first = 0;
     int second = 0;
     int third = 0;

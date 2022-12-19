@@ -1,6 +1,6 @@
-#include "HistoryList.h"
+﻿#include "HistoryList.h"
 
-void HistoryList_push_back(HistoryList* lock, std::string eval)
+void HistoryList_push_back(HistoryList *lock, std::string eval)
 {
 	auto end = lock;
 	while (end->next != nullptr)
@@ -15,7 +15,7 @@ void HistoryList_push_back(HistoryList* lock, std::string eval)
 	end->next = node;
 }
 
-bool HistoryList_Empty(HistoryList* lock)
+bool HistoryList_Empty(HistoryList *lock)
 {
 	if (lock->next == nullptr)
 	{
@@ -24,14 +24,14 @@ bool HistoryList_Empty(HistoryList* lock)
 	return false;
 }
 
-HistoryList* HistoryList_Init()
+HistoryList *HistoryList_Init()
 {
 	auto head = new HistoryList;
 	head->next = nullptr;
 	return head;
 }
 
-std::string HistoryList_pop_Back(HistoryList* lock)
+std::string HistoryList_pop_Back(HistoryList *lock)
 {
 	if (HistoryList_Empty(lock))
 	{
