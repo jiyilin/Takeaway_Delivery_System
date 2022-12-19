@@ -13,8 +13,8 @@ using UserList = struct UserList
 
 void UserList_push_back(UserList*& lock, User eval);
 void UserList_push_front(UserList*& lock, User eval);
-void UserList_pop_back(UserList*& lock);
-void UserList_pop_front(UserList*& lock);
+User* UserList_pop_back(UserList*& lock);
+User* UserList_pop_front(UserList*& lock);
 bool UserList_Empty(UserList* lock);
 int UserList_Length(UserList* lock);
 User* UserList_gain_center(UserList* lock);

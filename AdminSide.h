@@ -13,6 +13,7 @@ private:
 	bool AdminSidePro(int button);
 	void UserLogsOff();
 	bool AdminSideLoad();
+	void OverviewOfUserData();
 public:
 	void AdminSideStart();
 };

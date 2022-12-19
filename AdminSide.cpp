@@ -36,7 +36,7 @@ bool AdminSide::AdminSidePro(int button)
 	switch (button)
 	{
 	case 1:
-		std::cout << "用户数据全览" << std::endl;
+		this->OverviewOfUserData();
 		break;
 	case 2:
 		this->UserLogsOff();
@@ -97,6 +97,20 @@ bool AdminSide::AdminSideLoad()
 		return false;
 	}
 	return true;
+}
+
+void AdminSide::OverviewOfUserData()
+{
+	auto data = GainUSerData();
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "用户" << "\t" << "密码" << std::endl;
+	while (UserList_Empty(data) == false)
+	{
+		auto process = UserList_pop_back(data);
+		std::cout << process->GainUserID() << "\t" << process->GainUserPassword() << std::endl;
+	}
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "显示完毕" << std::endl;
 }
 
 void AdminSide::AdminSideStart()

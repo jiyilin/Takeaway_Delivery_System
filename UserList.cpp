@@ -27,24 +27,28 @@ void UserList_push_front(UserList*& lock, User eval)
 	lock->next = node;
 }
 
-void UserList_pop_back(UserList*& lock)
+User* UserList_pop_back(UserList*& lock)
 {
 	if (UserList_Empty(lock))
 	{
-		return;
+		return nullptr;
 	}
 	auto end = lock;
 	while (end->next->next != nullptr)
 	{
 		end = end->next;
 	}
+	auto key = end->next->data;
 	end->next = nullptr;
+	return key;
 }
 
-void UserList_pop_front(UserList*& lock)
+User* UserList_pop_front(UserList*& lock)
 {
+	auto key = lock->data;
 	lock = lock->next;
 	lock->data = nullptr;
+	return key;
 }
 
 bool UserList_Empty(UserList* lock)
