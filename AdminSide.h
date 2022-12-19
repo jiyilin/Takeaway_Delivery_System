@@ -14,6 +14,8 @@ private:
 	void UserLogsOff();
 	bool AdminSideLoad();
 	void OverviewOfUserData();
+	void MapViewing();
+	void MapModifications();
 public:
 	void AdminSideStart();
 };

@@ -42,10 +42,10 @@ bool AdminSide::AdminSidePro(int button)
 		this->UserLogsOff();
 		break;
 	case 3:
-		std::cout << "地图查看" << std::endl;
+		this->MapViewing();
 		break;
 	case 4:
-		std::cout << "地图修改" << std::endl;
+		this->MapModifications();
 		break;
 	default:
 		return false;
@@ -111,6 +111,38 @@ void AdminSide::OverviewOfUserData()
 	}
 	std::cout << "*= ================================================  =*" << std::endl;
 	std::cout << "显示完毕" << std::endl;
+}
+
+void AdminSide::MapViewing()
+{
+	std::ifstream read;
+	read.open("Map.txt", std::ios_base::in);
+	if (read.is_open() == false)
+	{
+		std::cout << "查看失败    地图打开异常" << std::endl;
+		return;
+	}
+	std::string input;
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "                          地图                         " << std::endl;
+	while (std::getline(read,input))
+	{
+		std::cout << input << std::endl;
+	}
+	std::cout << "*= ================================================  =*" << std::endl;
+	read.close();
+}
+
+void AdminSide::MapModifications()
+{
+	auto key = system("Map.txt");
+	if (key != 0)
+	{
+		std::ofstream write;
+		write.open("Map.txt", std::ios_base::out);
+		write.close();
+		system("Map.txt");
+	}
 }
 
 void AdminSide::AdminSideStart()
