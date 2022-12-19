@@ -19,11 +19,6 @@ bool Map::ReadMapList()
 	return true;
 }
 
-void Map::GainRoute()
-{
-
-}
-
 void Map::Print_Route()
 {
 	auto search = this->key.begin();
@@ -51,4 +46,9 @@ bool Map::SEARCH_MAP(std::string lock)
 		search++;
 	}
 	return false;
+}
+
+void Map::GainRoute(std::string From, std::string To)
+{
+
 }

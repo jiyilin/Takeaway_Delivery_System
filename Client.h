@@ -19,7 +19,7 @@ private:
 	void UserHistory();
 	void DestoryUserTxt();
 	void LookForARoute();
-	void WriteUserHistoryTxt(std::string lock);
+	void WriteUserHistoryTxt(std::string From,std::string To);
 public:
 	void ClientStart();
 	~Client();

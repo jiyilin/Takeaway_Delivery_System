@@ -239,31 +239,34 @@ void Client::DestoryUserTxt()
 
 void Client::LookForARoute()
 {
+	std::cout << "请输入出发地点：";
+	std::string From;
+	std::getline(std::cin, From);
 	std::cout << "请输入到达地点：";
-	std::string input;
-	std::getline(std::cin, input);
+	std::string To;
+	std::getline(std::cin, To);
 	Map data;
 	if (data.ReadMapList() == false)
 	{
 		return;
 	}
-	if (data.SEARCH_MAP(input) == false)
+	if (data.SEARCH_MAP(To) == false || data.SEARCH_MAP(From) == false)
 	{
 		std::cout << "查找失败，地图无该地点" << std::endl;
 		return;
 	}
-	data.GainRoute();
+	data.GainRoute(From , To);
 	data.Print_Route();
-	this->WriteUserHistoryTxt(input);
+	this->WriteUserHistoryTxt( From , To );
 }
 
-void Client::WriteUserHistoryTxt(std::string lock)
+void Client::WriteUserHistoryTxt(std::string From, std::string To)
 {
 	std::ofstream write;
 	write.open("./data/" + useNow->GainUserID() + ".txt", std::ios_base::app);
 	SYSTEMTIME time;
 	GetLocalTime(&time);
-	write << lock << " " <<
+	write << "从 "<< From << "到 " << To << " " <<
 		time.wYear << ":" << time.wMonth << ":" << time.wDay <<":" <<
 		time.wHour << ":" << time.wMinute << ":" << time.wSecond << std::endl;
 	write.close();

@@ -16,7 +16,7 @@ private:
 public:
 	bool SEARCH_MAP(std::string lock);
 	bool ReadMapList();
-	void GainRoute();
+	void GainRoute(std::string From,std::string To);
 	void Print_Route();
 };
 
