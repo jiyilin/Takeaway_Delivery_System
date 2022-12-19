@@ -1,9 +1,12 @@
 #include "Client.h"
 #include<iostream>
 #include<fstream>
+#include<string>
 #include<string.h>
+#include<cstdio>
 
 #include"User.h"
+#include"HistoryList.h"
 
 bool ClientSystem::ClientSystemMenu()
 {
@@ -86,6 +89,9 @@ void ClientSystem::RegisteredUsers()
 	write.open("./data/UsersData.txt", std::ios_base::app);
 	write << idInput << " " << passwordInput << std::endl;
 	write.close();
+	std::ofstream writeHistory;
+	writeHistory.open("./data/" + idInput +".txt", std::ios_base::app);
+	writeHistory.close();
 }
 
 void ClientSystem::ClientSystemStart()
@@ -131,13 +137,14 @@ bool Client::ClientPro(int button)
 		std::cout << "寻找线路" << std::endl;
 		break;
 	case 2:
-		std::cout << "历史记录" << std::endl;
+		this->UserHistory();
 		break;
 	case 3:
 		this->ChangeUserPassword();
 		break;
 	case 4:
 		std::cout << "账号注销成功" << std::endl;
+		this->DestoryUserTxt();
 		return false;
 	default:
 		std::ofstream write;
@@ -190,6 +197,36 @@ void Client::ChangeUserPassword()
 		return;
 	}
 	this->useNow->SetUserPassword(newPassowrd);
+}
+
+void Client::UserHistory()
+{
+	std::string txt;
+	txt = "./data/" + this->useNow->GainUserID() + ".txt";
+	std::ifstream read;
+	read.open(txt, std::ios_base::in);
+	std::string input;
+	auto data = HistoryList_Init();
+	while (std::getline(read,input))
+	{
+		HistoryList_push_back(data, input);
+	}
+	read.close();
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "                        历史记录                       " << std::endl;
+	while (HistoryList_Empty(data) == false)
+	{
+		std::cout << HistoryList_pop_Back(data) << std::endl;
+	}
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "显示完成" << std::endl;
+	system("pause");
+}
+
+void Client::DestoryUserTxt()
+{
+	std::string txt = "./data/" + this->useNow->GainUserID() + ".txt";
+	remove(txt.c_str());
 }
 
 void Client::ClientStart()

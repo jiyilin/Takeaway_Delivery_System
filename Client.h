@@ -16,6 +16,8 @@ private:
 	bool ClientPro(int button);
 	bool LoadClient();
 	void ChangeUserPassword();
+	void UserHistory();
+	void DestoryUserTxt();
 public:
 	void ClientStart();
 	~Client();
