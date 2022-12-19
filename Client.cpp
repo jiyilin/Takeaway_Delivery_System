@@ -43,6 +43,21 @@ bool ClientSystem::ClientSystemPro(int button)
 	return true;
 }
 
+void GainID(std::string& lock)
+{
+	std::string key;
+	for (int i = 0; i < lock.size(); i++)
+	{
+		if (lock[i]==' ')
+		{
+			break;
+		}
+		key.push_back(lock[i]);
+	}
+	key = lock;
+}
+
+
 void ClientSystem::RegisteredUsers()
 {
 	std::string idInput;
@@ -57,7 +72,8 @@ void ClientSystem::RegisteredUsers()
 	read.open("./data/UsersData.txt", std::ios_base::in);
 	while (std::getline(read,process))
 	{
-		if (std::strstr(process.c_str(),idInput.c_str()) != nullptr)
+		GainID(process);
+		if (process == idInput)
 		{
 			std::cout << "注册失败!!!   该用户已被注册" << std::endl;
 			read.close();
@@ -67,7 +83,7 @@ void ClientSystem::RegisteredUsers()
 	read.close();
 
 	std::ofstream write;
-	write.open("./data/UserData.txt", std::ios_base::app);
+	write.open("./data/UsersData.txt", std::ios_base::app);
 	write << idInput << " " << passwordInput << std::endl;
 	write.close();
 }
@@ -124,6 +140,10 @@ bool Client::ClientPro(int button)
 		std::cout << "账号注销" << std::endl;
 		break;
 	default:
+		std::ofstream write;
+		write.open("./data/UsersData.txt", std::ios_base::app);
+		write << useNow->GainUserID() << " " << useNow->GainUserPassword() << std::endl;
+		write.close();
 		return false;
 	}
 	return true;
@@ -165,3 +185,5 @@ void Client::ClientStart()
 		system("cls");
 	}
 }
+
+Client::~Client() = default;

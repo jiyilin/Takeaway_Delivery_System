@@ -17,6 +17,7 @@ private:
 	bool LoadClient();
 public:
 	void ClientStart();
+	~Client();
 };
 
 class ClientSystem : private Kernel
