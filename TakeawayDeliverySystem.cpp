@@ -1,6 +1,7 @@
 ﻿#include "TakeawayDeliverySystem.h"
 #include <Windows.h>
 #include<iostream>
+#include<fstream>
 
 bool TakeawayDeliverySystem::EngineDetection()
 {
@@ -19,6 +20,9 @@ bool TakeawayDeliverySystem::EngineDetection()
 		}
 	}
 	system("cls");
+	std::ofstream write;
+	write.open("./data/UsersData.txt", std::ios_base::app);
+	write.close();
 	return true;
 }
 

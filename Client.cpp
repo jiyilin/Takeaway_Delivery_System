@@ -134,7 +134,7 @@ bool Client::ClientPro(int button)
 	switch (button)
 	{
 	case 1:
-		std::cout << "Ñ°ÕÒÏßÂ·" << std::endl;
+		this->LookForARoute();
 		break;
 	case 2:
 		this->UserHistory();
@@ -226,6 +226,11 @@ void Client::DestoryUserTxt()
 {
 	std::string txt = "./data/" + this->useNow->GainUserID() + ".txt";
 	remove(txt.c_str());
+}
+
+void Client::LookForARoute()
+{
+	std::cout << "1" << std::endl;
 }
 
 void Client::ClientStart()

@@ -18,6 +18,7 @@ private:
 	void ChangeUserPassword();
 	void UserHistory();
 	void DestoryUserTxt();
+	void LookForARoute();
 public:
 	void ClientStart();
 	~Client();
