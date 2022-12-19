@@ -25,16 +25,6 @@ std::string User::GainUserPassword()
 	return this->password;
 }
 
-std::string User::GainStartingPoint()
-{
-	return this->startingPoint;
-}
-
-std::string User::GainDestination()
-{
-	return this->destination;
-}
-
 bool User::JudgmentUserLoad(std::string cipher)
 {
 	if (this->password == cipher)
@@ -57,24 +47,3 @@ bool User::SetUserPassword(std::string lock)
 		return true;
 	}
 }
-
-bool User::SetUserStartingPoint(std::string lock)
-{
-	if (this->startingPoint == lock)
-	{
-		return false;
-	}
-	this->startingPoint = lock;
-	return true;
-}
-
-bool User::SetUserDestination(std::string lock)
-{
-	if (this->destination == lock)
-	{
-		return false;
-	}
-	this->destination = lock;
-	return true;
-}
-
