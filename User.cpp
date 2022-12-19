@@ -36,6 +36,7 @@ bool User::SetUserPassword(std::string lock)
 	}
 	else
 	{
+		this->password = lock;
 		std::cout << "ÃÜÂëÐÞ¸Ä³É¹¦" << std::endl;
 		return true;
 	}

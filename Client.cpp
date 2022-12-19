@@ -134,10 +134,11 @@ bool Client::ClientPro(int button)
 		std::cout << "ÀúÊ·¼ÇÂ¼" << std::endl;
 		break;
 	case 3:
-		std::cout << "ÐÞ¸ÄÃÜÂë" << std::endl;
+		this->ChangeUserPassword();
 		break;
 	case 4:
-		std::cout << "ÕËºÅ×¢Ïú" << std::endl;
+		std::cout << "ÕËºÅ×¢Ïú³É¹¦" << std::endl;
+		return false;
 		break;
 	default:
 		std::ofstream write;
@@ -169,6 +170,27 @@ bool Client::LoadClient()
 		return true;
 	}
 	return false;
+}
+
+void Client::ChangeUserPassword()
+{
+	std::string oldPassword;
+	std::string newPassowrd;
+	std::cout << "ÇëÊäÈëÔ­ÃÜÂë£º";
+	std::getline(std::cin, oldPassword);
+	if (oldPassword != this->useNow->GainUserPassword())
+	{
+		std::cout << "ÃÜÂëÐÞ¸ÄÊ§°Ü!!!   ÃÜÂëÊäÈë´íÎó" << std::endl;
+		return;
+	}
+	std::cout << "ÇëÊäÈëÐÂÃÜÂë£º";
+	std::getline(std::cin, newPassowrd);
+	if (oldPassword == newPassowrd)
+	{
+		std::cout << "ÃÜÂëÐÞ¸ÄÊ§°Ü!!!   Ô­ÃÜÂëÓëÐÂÃÜÂëÒ»ÖÂ" << std::endl;
+		return;
+	}
+	this->useNow->SetUserPassword(newPassowrd);
 }
 
 void Client::ClientStart()

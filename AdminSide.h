@@ -11,6 +11,8 @@ private:
 	bool AdminSideMenu();
 	void AdminSideUI();
 	bool AdminSidePro(int button);
+	void UserLogsOff();
+	bool AdminSideLoad();
 public:
 	void AdminSideStart();
 };

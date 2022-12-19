@@ -15,6 +15,7 @@ private:
 	void CLientUI();
 	bool ClientPro(int button);
 	bool LoadClient();
+	void ChangeUserPassword();
 public:
 	void ClientStart();
 	~Client();
