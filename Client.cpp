@@ -7,6 +7,7 @@
 
 #include"User.h"
 #include"HistoryList.h"
+#include"Map.h"
 
 bool ClientSystem::ClientSystemMenu()
 {
@@ -230,7 +231,21 @@ void Client::DestoryUserTxt()
 
 void Client::LookForARoute()
 {
-	std::cout << "1" << std::endl;
+	std::cout << "请输入到达地点：";
+	std::string input;
+	std::getline(std::cin, input);
+	Map data;
+	if (data.ReadMapList() == false)
+	{
+		return;
+	}
+	if (data.SEARCH_MAP(input) == false)
+	{
+		std::cout << "查找失败，地图无该地点" << std::endl;
+		return;
+	}
+	data.GainRoute();
+	data.Print_Route();
 }
 
 void Client::ClientStart()

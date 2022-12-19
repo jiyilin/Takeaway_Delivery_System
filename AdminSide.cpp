@@ -117,12 +117,24 @@ void AdminSide::MapViewing()
 {
 	std::ifstream read;
 	read.open("Map.txt", std::ios_base::in);
-	if (read.is_open() == false)
+	std::ifstream readList;
+	readList.open("MapList.txt", std::ios_base::in);
+	if (read.is_open() == false || readList.is_open() == false)
 	{
 		std::cout << "查看失败    地图打开异常" << std::endl;
 		return;
 	}
 	std::string input;
+
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "                        地图节点                       " << std::endl;
+	while (std::getline(readList, input))
+	{
+		std::cout << input << std::endl;
+	}
+	std::cout << "*= ================================================  =*" << std::endl;
+	readList.close();
+
 	std::cout << "*= ================================================  =*" << std::endl;
 	std::cout << "                          地图                         " << std::endl;
 	while (std::getline(read,input))
@@ -135,12 +147,17 @@ void AdminSide::MapViewing()
 
 void AdminSide::MapModifications()
 {
+	auto lock = system("MapList.txt");
 	auto key = system("Map.txt");
-	if (key != 0)
+	if (key != 0 || lock != 0)
 	{
+		std::ofstream write1;
+		write1.open("MapList.txt", std::ios_base::out);
+		write1.close();
 		std::ofstream write;
 		write.open("Map.txt", std::ios_base::out);
 		write.close();
+		system("MapList.txt");
 		system("Map.txt");
 	}
 }
