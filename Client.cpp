@@ -24,7 +24,7 @@ bool ClientSystem::ClientSystemMenu()
 void ClientSystem::CLientSystemUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     欢迎使用外卖导航系统客户端     ****** ||" << std::endl;
+	std::cout << "|| *******       欢迎使用导航系统客户端       ****** ||" << std::endl;
 	std::cout << "|| *              1. 登录                          * ||" << std::endl;
 	std::cout << "|| *              2. 注册                          * ||" << std::endl;
 	std::cout << "|| *              0. 退出                          * ||" << std::endl;
@@ -127,7 +127,7 @@ bool Client::ClientMenu()
 void Client::CLientUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     欢迎使用外卖导航系统客户端     ****** ||" << std::endl;
+	std::cout << "|| *******      欢迎使用导航系统客户端        ****** ||" << std::endl;
 	std::cout << "|| *              1. 寻找线路                      * ||" << std::endl;
 	std::cout << "|| *              2. 历史记录                      * ||" << std::endl;
 	std::cout << "|| *              3. 修改密码                      * ||" << std::endl;

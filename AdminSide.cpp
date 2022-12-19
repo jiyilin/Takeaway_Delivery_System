@@ -21,7 +21,7 @@ bool AdminSide::AdminSideMenu()
 void AdminSide::AdminSideUI()
 {
 	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "|| *******     欢迎使用外卖导航系统管理端     ****** ||" << std::endl;
+	std::cout << "|| *******       欢迎使用导航系统管理端       ****** ||" << std::endl;
 	std::cout << "|| *              1. 用户数据全览                  * ||" << std::endl;
 	std::cout << "|| *              2. 用户注销                      * ||" << std::endl;
 	std::cout << "|| *              3. 地图查看                      * ||" << std::endl;
