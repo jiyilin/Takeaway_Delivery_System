@@ -220,7 +220,6 @@ void Client::UserHistory()
 	}
 	std::cout << "*= ================================================  =*" << std::endl;
 	std::cout << "ÏÔÊ¾Íê³É" << std::endl;
-	system("pause");
 }
 
 void Client::DestoryUserTxt()
