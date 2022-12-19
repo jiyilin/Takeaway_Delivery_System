@@ -139,7 +139,6 @@ bool Client::ClientPro(int button)
 	case 4:
 		std::cout << "ÕËºÅ×¢Ïú³É¹¦" << std::endl;
 		return false;
-		break;
 	default:
 		std::ofstream write;
 		write.open("./data/UsersData.txt", std::ios_base::app);
