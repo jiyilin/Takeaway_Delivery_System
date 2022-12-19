@@ -2,6 +2,8 @@
 #include<iostream>
 #include<fstream>
 
+#include"Graph.h"
+
 bool Map::ReadMapList()
 {
 	std::ifstream read;
@@ -17,6 +19,11 @@ bool Map::ReadMapList()
 		this->MapList.push_back(input);
 	}
 	return true;
+}
+
+void Map::GainRoute(std::string From, std::string To)
+{
+	this->key =  MapInterface(From, To);
 }
 
 void Map::Print_Route()
@@ -48,7 +55,3 @@ bool Map::SEARCH_MAP(std::string lock)
 	return false;
 }
 
-void Map::GainRoute(std::string From, std::string To)
-{
-
-}

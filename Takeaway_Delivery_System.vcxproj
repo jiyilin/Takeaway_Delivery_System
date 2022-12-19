@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="AdminSide.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="HistoryList.cpp" />
     <ClCompile Include="Kernel.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -141,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="AdminSide.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="HistoryList.h" />
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="Map.h" />
