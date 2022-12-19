@@ -19,6 +19,26 @@ bool Map::ReadMapList()
 	return true;
 }
 
+void Map::GainRoute()
+{
+
+}
+
+void Map::Print_Route()
+{
+	auto search = this->key.begin();
+	int number = 1;
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "                          路线如下                     " << std::endl;
+	while (search != key.end())
+	{
+		std::cout << number << ".  " << *search << std::endl;
+		search++;
+		number++;
+	}
+	std::cout << "*= ================================================  =*" << std::endl;
+}
+
 bool Map::SEARCH_MAP(std::string lock)
 {
 	auto search = this->MapList.begin();

@@ -1,4 +1,5 @@
 #include "Client.h"
+#include<Windows.h>
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -70,6 +71,13 @@ void ClientSystem::RegisteredUsers()
 	std::getline(std::cin, idInput);
 	std::cout << "请输入密码(密码应大于5位，小于16位)：";
 	std::getline(std::cin, passwordInput);
+
+	if (idInput.length() == 0 || passwordInput.length() == 0)
+	{
+		std::cout << "注册失败，账号密码不能为空" << std::endl;
+		return;
+	}
+
 	std::string process;
 
 	std::ifstream read;
@@ -246,6 +254,19 @@ void Client::LookForARoute()
 	}
 	data.GainRoute();
 	data.Print_Route();
+	this->WriteUserHistoryTxt(input);
+}
+
+void Client::WriteUserHistoryTxt(std::string lock)
+{
+	std::ofstream write;
+	write.open("./data/" + useNow->GainUserID() + ".txt", std::ios_base::app);
+	SYSTEMTIME time;
+	GetLocalTime(&time);
+	write << lock << " " <<
+		time.wYear << ":" << time.wMonth << ":" << time.wDay <<":" <<
+		time.wHour << ":" << time.wMinute << ":" << time.wSecond << std::endl;
+	write.close();
 }
 
 void Client::ClientStart()
