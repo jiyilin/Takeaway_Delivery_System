@@ -54,7 +54,7 @@ void ClientSystem::RegisteredUsers()
 	std::string process;
 
 	std::ifstream read;
-	read.open("./data/UserData.txt", std::ios_base::in);
+	read.open("./data/UsersData.txt", std::ios_base::in);
 	while (std::getline(read,process))
 	{
 		if (std::strstr(process.c_str(),idInput.c_str()) != nullptr)
@@ -131,7 +131,24 @@ bool Client::ClientPro(int button)
 
 bool Client::LoadClient()
 {
-	return true;
+	std::string id;
+	std::string password;
+	std::cout << "ÇëÊäÈëÕËºÅ£º";
+	std::getline(std::cin, id);
+	std::cout << "ÇëÊäÈëÃÜÂë£º";
+	std::getline(std::cin, password);
+	if (id.length() == 0 || password.length() == 0)
+	{
+		std::cout << "µÇÂ¼Ê§°Ü    ÕËºÅÃÜÂë²»ÄÜÎª¿Õ" << std::endl;
+	}
+	else if (UserLoad(id,password,this->useNow))
+	{
+		std::cout << "µÇÂ¼³É¹¦" << std::endl;
+		system("pause");
+		system("cls");
+		return true;
+	}
+	return false;
 }
 
 void Client::ClientStart()

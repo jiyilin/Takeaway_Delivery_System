@@ -5,9 +5,12 @@
 
 #include"Kernel.h"
 
+#include"UserTreeNode.h"
+
 class Client : private Kernel
 {
 private:
+	User* useNow;
 	bool ClientMenu();
 	void CLientUI();
 	bool ClientPro(int button);

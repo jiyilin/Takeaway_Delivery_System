@@ -3,13 +3,6 @@
 User::User(std::string name, std::string cipher)
 {
 	this->id = name;
-	again:
-	if (cipher.length() < 6 || cipher.length() > 15)
-	{
-		std::cout << "密码应大于5位，小于16位!!!    请重新输入:";
-		std::getline(std::cin, cipher);
-		goto again;
-	}
 	this->password = cipher;
 }
 

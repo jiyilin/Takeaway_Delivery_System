@@ -133,6 +133,8 @@
     <ClCompile Include="TakeawayDeliverySystem.cpp" />
     <ClCompile Include="Takeaway_Delivery_System.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserList.cpp" />
+    <ClCompile Include="UserTreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdminSide.h" />
@@ -140,6 +142,8 @@
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="TakeawayDeliverySystem.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserList.h" />
+    <ClInclude Include="UserTreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
