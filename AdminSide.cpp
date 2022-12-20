@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdio>
 #include "UserTreeNode.h"
 
 constexpr auto AdministratorID = "福州大学至诚学院";
@@ -76,6 +77,8 @@ void AdminSide::UserLogsOff()
 	write.close();
 	if (isDelete == true)
 	{
+		std::string txt = "./data/" + id + ".txt";
+		remove(txt.c_str());
 		std::cout << "删除成功" << std::endl;
 	}
 	else
