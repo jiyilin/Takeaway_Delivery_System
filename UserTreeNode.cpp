@@ -124,6 +124,7 @@ bool UserDataFlushed(std::string flag)
 
 bool UserLoad(std::string id, std::string password, User *&key)
 {
+	key = nullptr;
 	auto data = GainUSerData();
 	if (!SearchUserTreeList(data, id, key))
 	{
