@@ -20,6 +20,7 @@ private:
 	void MapModificationsPro(int button);
 	void MapModificationsMenu();
 	void ModifyMapFromAFile();
+	void MapAddNode();
 public:
 	void AdminSideStart();
 };

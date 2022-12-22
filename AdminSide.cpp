@@ -7,6 +7,7 @@
 
 #include "UserTreeNode.h"
 #include"StringVector.h"
+#include"StringList.h"
 
 constexpr auto AdministratorID = "福州大学至诚学院";
 constexpr auto AdministratorPassword = "123456";
@@ -245,7 +246,7 @@ void AdminSide::MapModificationsPro(int button)
 	switch (button)
 	{
 	case 1:
-		std::cout << "*   1. 添加节点" << std::endl;
+		MapAddNode();
 		break;
 	case 2:
 		std::cout << "*   2. 删除节点" << std::endl;
@@ -293,6 +294,42 @@ void AdminSide::ModifyMapFromAFile()
 		system("MapList.txt");
 		system("Map.txt");
 	}
+}
+
+StringList* ReadMapListTxt()
+{
+	std::ifstream read;
+	read.open("MapList.txt", std::ios_base::in);
+	auto data = StringList_init();
+	std::string input;
+	while (std::getline(read, input))
+	{
+		StringList_push_back(data, input);
+	}
+	read.close();
+	return data;
+}
+
+void AdminSide::MapAddNode()
+{
+	std::string input;
+	std::cout << "请输入新节点（如:text）：";
+	std::getline(std::cin, input);
+	auto data = ReadMapListTxt();
+	while (data->next != nullptr)
+	{
+		data = data->next;
+		if (data->data == input)
+		{
+			std::cout << "添加错误，该节点已存在" << std::endl;
+			return;
+		}
+	}
+	std::ofstream write;
+	write.open("MapList.txt", std::ios_base::app);
+	write << input << std::endl;
+	write.close();
+	std::cout << "添加成果" << std::endl;
 }
 
 void AdminSide::AdminSideStart()

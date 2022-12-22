@@ -133,6 +133,7 @@
     <ClCompile Include="HistoryList.cpp" />
     <ClCompile Include="Kernel.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="StringList.cpp" />
     <ClCompile Include="StringVector.cpp" />
     <ClCompile Include="TakeawayDeliverySystem.cpp" />
     <ClCompile Include="Takeaway_Delivery_System.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="HistoryList.h" />
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="StringList.h" />
     <ClInclude Include="StringVector.h" />
     <ClInclude Include="TakeawayDeliverySystem.h" />
     <ClInclude Include="User.h" />
