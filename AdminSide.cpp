@@ -209,6 +209,77 @@ void AdminSide::MapViewing()
 
 void AdminSide::MapModifications()
 {
+	//auto lock = system("MapList.txt");
+	//auto key = system("Map.txt");
+	//if (key != 0 || lock != 0)
+	//{
+	//	std::ofstream write1;
+	//	write1.open("MapList.txt", std::ios_base::out);
+	//	write1.close();
+	//	std::ofstream write;
+	//	write.open("Map.txt", std::ios_base::out);
+	//	write.close();
+	//	system("MapList.txt");
+	//	system("Map.txt");
+	//}
+	this->MapModificationsMenu();
+}
+
+void AdminSide::MapModificationsUI()
+{
+	std::cout << "*= ================================================  =*" << std::endl;
+	std::cout << "                请选择您要的修改方式                   " << std::endl;
+	std::cout << "*   1. 添加节点" << std::endl;
+	std::cout << "*   2. 删除节点" << std::endl;
+	std::cout << "*   3. 修改节点" << std::endl;
+	std::cout << "*   4. 添加路线" << std::endl;
+	std::cout << "*   5. 删除路线" << std::endl;
+	std::cout << "*   6. 修改路线" << std::endl;
+	std::cout << "*   7. 通过文件修改" << std::endl;
+	std::cout << "*   0. 取消" << std::endl;
+	std::cout << "*= ================================================  =*" << std::endl;
+}
+
+void AdminSide::MapModificationsPro(int button)
+{
+	switch (button)
+	{
+	case 1:
+		std::cout << "*   1. 添加节点" << std::endl;
+		break;
+	case 2:
+		std::cout << "*   2. 删除节点" << std::endl;
+		break;
+	case 3:
+		std::cout << "*   3. 修改节点" << std::endl;
+		break;
+	case 4:
+		std::cout << "*   4. 添加路线" << std::endl;
+		break;
+	case 5:
+		std::cout << "*   5. 删除路线" << std::endl;
+		break;
+	case 6:
+		std::cout << "*   6. 修改路线" << std::endl;
+		break;
+	case 7:
+		this->ModifyMapFromAFile();
+		break;
+	default:
+		return;
+		break;
+	}
+}
+
+void AdminSide::MapModificationsMenu()
+{
+	MapModificationsUI();
+	auto button = this->GainMenuChoose(7, true);
+	this->MapModificationsPro(button);
+}
+
+void AdminSide::ModifyMapFromAFile()
+{
 	auto lock = system("MapList.txt");
 	auto key = system("Map.txt");
 	if (key != 0 || lock != 0)

@@ -16,7 +16,10 @@ private:
 	void OverviewOfUserData();
 	void MapViewing();
 	void MapModifications();
-
+	void MapModificationsUI();
+	void MapModificationsPro(int button);
+	void MapModificationsMenu();
+	void ModifyMapFromAFile();
 public:
 	void AdminSideStart();
 };
