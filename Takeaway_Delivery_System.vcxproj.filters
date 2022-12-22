@@ -48,6 +48,9 @@
     <ClCompile Include="Graph.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="StringVector.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StringVector.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

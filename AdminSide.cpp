@@ -1,9 +1,12 @@
 ﻿#include "AdminSide.h"
 #include <iostream>
 #include <fstream>
+#include<sstream>
 #include <string>
 #include <cstdio>
+
 #include "UserTreeNode.h"
+#include"StringVector.h"
 
 constexpr auto AdministratorID = "福州大学至诚学院";
 constexpr auto AdministratorPassword = "123456";
@@ -118,6 +121,39 @@ void AdminSide::OverviewOfUserData()
 	std::cout << "显示完毕" << std::endl;
 }
 
+void GainMapHistoryString_AdminSide(std::string lock, int& from, int& to, double& distance)
+{
+	std::string fromString;
+	std::string toString;
+	std::string distanceString;
+	int flag = 0;
+	for (int i = 0; i < lock.size(); i++)
+	{
+		if (lock[i] == ' ')
+		{
+			flag++;
+		}
+		if (flag == 0 && lock[i] != ' ')
+		{
+			fromString.push_back(lock[i]);
+		}
+		else if (flag == 1 && lock[i] != ' ')
+		{
+			toString.push_back(lock[i]);
+		}
+		else if (flag == 2 && lock[i] != ' ')
+		{
+			distanceString.push_back(lock[i]);
+		}
+	}
+	std::stringstream streamFrom(fromString);
+	std::stringstream streamTo(toString);
+	std::stringstream streamDistance(distanceString);
+	streamFrom >> from;
+	streamTo >> to;
+	streamDistance >> distance;
+}
+
 void AdminSide::MapViewing()
 {
 	std::ifstream read;
@@ -131,21 +167,42 @@ void AdminSide::MapViewing()
 	}
 	std::string input;
 
-	std::cout << "*= ================================================  =*" << std::endl;
-	std::cout << "                        地图节点                       " << std::endl;
+	//std::cout << "*= ================================================  =*" << std::endl;
+	//std::cout << "                        地图节点                       " << std::endl;
+	int number = 0;
+	//std::cout << "序号" << "\t" << "名称" << std::endl;
+
+	auto* map = new StringVector;
 	while (std::getline(readList, input))
 	{
-		std::cout << input << std::endl;
+		//std::cout << number << "\t" << input << std::endl;
+		StringVector_push_back(map, input);
+		number++;
 	}
-	std::cout << "*= ================================================  =*" << std::endl;
+	//std::cout << "*= ================================================  =*" << std::endl;
 	readList.close();
 
 	std::cout << "*= ================================================  =*" << std::endl;
 	std::cout << "                          地图                         " << std::endl;
+	std::cout << "出发点\t\t\t到达点\t\t\t代价" << std::endl;
+	std::getline(read, input);
+
+	auto* data = new StringVector;
 	while (std::getline(read, input))
 	{
-		std::cout << input << std::endl;
+		StringVector_push_back(data, input);
 	}
+	StringVector_sort(data);
+
+	int from = 0;
+	int to = 0;
+	double distance = 0.0;
+	for (int i = 0; i < StringVector_size(data); i++)
+	{
+		GainMapHistoryString_AdminSide(data->data[i], from, to, distance);
+		std::cout << map->data[from] << "\t\t\t" << map->data[to] << "\t\t\t" << distance << std::endl;
+	}
+
 	std::cout << "*= ================================================  =*" << std::endl;
 	read.close();
 }
