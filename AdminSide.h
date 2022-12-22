@@ -21,6 +21,7 @@ private:
 	void MapModificationsMenu();
 	void ModifyMapFromAFile();
 	void MapAddNode();
+	void MapModifyNodeName();
 public:
 	void AdminSideStart();
 };

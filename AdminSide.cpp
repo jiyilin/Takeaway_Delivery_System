@@ -232,10 +232,10 @@ void AdminSide::MapModificationsUI()
 	std::cout << "                请选择您要的修改方式                   " << std::endl;
 	std::cout << "*   1. 添加节点" << std::endl;
 	std::cout << "*   2. 删除节点" << std::endl;
-	std::cout << "*   3. 修改节点" << std::endl;
+	std::cout << "*   3. 修改节点名称" << std::endl;
 	std::cout << "*   4. 添加路线" << std::endl;
 	std::cout << "*   5. 删除路线" << std::endl;
-	std::cout << "*   6. 修改路线" << std::endl;
+	std::cout << "*   6. 修改路线代价" << std::endl;
 	std::cout << "*   7. 通过文件修改" << std::endl;
 	std::cout << "*   0. 取消" << std::endl;
 	std::cout << "*= ================================================  =*" << std::endl;
@@ -246,13 +246,13 @@ void AdminSide::MapModificationsPro(int button)
 	switch (button)
 	{
 	case 1:
-		MapAddNode();
+		this->MapAddNode();
 		break;
 	case 2:
 		std::cout << "*   2. 删除节点" << std::endl;
 		break;
 	case 3:
-		std::cout << "*   3. 修改节点" << std::endl;
+		this->MapModifyNodeName();
 		break;
 	case 4:
 		std::cout << "*   4. 添加路线" << std::endl;
@@ -329,7 +329,61 @@ void AdminSide::MapAddNode()
 	write.open("MapList.txt", std::ios_base::app);
 	write << input << std::endl;
 	write.close();
-	std::cout << "添加成果" << std::endl;
+	std::cout << "添加成功" << std::endl;
+}
+
+void AdminSide::MapModifyNodeName()
+{
+	auto* data = new StringVector;
+	[&data] {
+		std::ifstream readList;
+		readList.open("MapList.txt", std::ios_base::in);
+		if (readList.is_open() == false)
+		{
+			std::cout << "查看失败    地图打开异常" << std::endl;
+			return;
+		}
+		std::string input;
+		std::cout << "*= ================================================  =*" << std::endl;
+		std::cout << "                        地图节点                       " << std::endl;
+		int number = 0;
+		std::cout << "序号" << "\t" << "名称" << std::endl;
+
+		while (std::getline(readList, input))
+		{
+			std::cout << number << "\t" << input << std::endl;
+			StringVector_push_back(data, input);
+			number++;
+		}
+		std::cout << "*= ================================================  =*" << std::endl;
+		readList.close();
+	}();
+
+	std::string inputNumber;
+	std::string inputName;
+	std::cout << "请输入待修改的节点编号:";
+	std::getline(std::cin, inputNumber);
+	std::cout << "请输入新名称：:";
+	std::getline(std::cin, inputName);
+	int number;
+	std::stringstream stream(inputNumber);
+	stream >> number;
+
+	if (number >= StringVector_size(data))
+	{
+		std::cout << "修改失败， 无此节点" << std::endl;
+		return;
+	}
+	data->data[number] = inputName;
+
+	std::ofstream write;
+	write.open("MapList.txt", std::ios_base::out);
+	for (int i = 0; i < StringVector_size(data); i++)
+	{
+		write << data->data[i] << std::endl;
+	}
+	write.close();
+	std::cout << "修改成功" << std::endl;
 }
 
 void AdminSide::AdminSideStart()
