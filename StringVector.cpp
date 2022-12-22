@@ -51,8 +51,36 @@ void GainMapHistoryString(std::string lock, int& from, int& to, double& distance
 	streamDistance >> distance;
 }
 
+void QuickSort(std::string* array, int low, int high)
+{
+	if (low >= high)
+	{
+		return;
+	}
+	int i = low;
+	int j = high;
+	auto& key = array[low];
+	while (i < j)
+	{
+		while (array[j] >= key && i < j)
+		{
+			j--;
+		}
+		array[i] = array[j];
+		while (array[i] <= key && i < j)
+		{
+			i++;
+		}
+		array[j] = array[i];
+	}
+	array[i] = key;
+	QuickSort(array, low, i - 1);
+	QuickSort(array, i + 1, high);
+}
+
 void StringVector_sort(StringVector*& lock)
 {
+	QuickSort(lock->data, 0, StringVector_size(lock) - 1);
 }
 
 void StringVector_expansion(StringVector*& lock)
